@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load image_manager %}
+
+{% block title %}
+    Contacts List
+{% endblock %}
+
+{% block content %}
+    {% include 'includes/_searchbar.html' %}
+
+
+    {% for contact in contacts %}
+        <div class="card" style="width: 18rem;">
+
+        {% if contact.image %}
+
+
+
+  <img src="{{contact.image|get_image_absolute_url}}" class="card-img-top" alt="...">
+             {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">First name: {{ contact.first_name }} <br> Last name: {{ contact.last_name }}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Country: {{ contact.country.name }}</li>
+    <li class="list-group-item">City: {{ contact.city }}</li>
+    <li class="list-group-item">Street: {{ contact.street }}</li>
+    <li class="list-group-item">Phone: {{ contact.phone }}</li>
+  </ul>
+  <div class="card-body">
+    <a href="{{ contact.url }}" class="card-link">Url</a>
+    <a href="{% url 'edit_contact' contact.id %}" class="card-link">Edit</a>
+    <a href="{% url 'delete_contact' contact.id %}" class="card-link">Delete</a>
+
+  </div>
+</div>
+
+{##}
+{#        <h2>................</h2>#}
+{#        <h2>Edit link: <a href="{% url 'edit_contact' contact.id %}">Click</a> </h2>#}
+{#        <h2>First name:  {{ contact.first_name }}</h2>#}
+{#        <h2>Last name: {{ contact.last_name }}</h2>#}
+{#        <h2>Country: {{ contact.country.name }}</h2>#}
+{#        <h2>City: {{ contact.city }}</h2>#}
+{#        <h2>Street: {{ contact.street }}</h2>#}
+{#        <h2>Phone: {{ contact.phone }}</h2>#}
+{#        <h2>Image: <img src='{{contact.image|get_image_absolute_url}}' height="100"></h2>#}
+{#        <h2>Url: {{ contact.url }}</h2>#}
+{#        <h2>................</h2>#}
+
+    {% endfor %}
+{% endblock %}

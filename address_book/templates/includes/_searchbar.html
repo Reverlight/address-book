@@ -1,0 +1,92 @@
+<p>
+    <a href="{% url 'add_contact' %}" class="btn btn-primary" type="button">
+        Add new item
+    </a>
+</p>
+<p>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+        Hide/show search
+    </button>
+</p>
+<div class="collapse" id="collapseExample">
+      <div class="alert alert-warning" role="alert">
+         Notice: use phone search without plus sign - (+)
+    </div>
+
+    <p>
+        <label for="first-name-search">Search by first_name:</label>
+        <input type="search" id="first-name-search" name="first_name"
+               aria-label="Search through site content">
+    </p>
+
+    <p>
+        <label for="last-name-search">Search by last_name:</label>
+        <input type="search" id="site-search" name="first-name"
+               aria-label="Search through site content">
+    </p>
+
+    <p>
+        <label for="country-search">Search by country:</label>
+        <input type="search" id="country-search" name="country"
+               aria-label="Search through site content">
+    </p>
+
+    <p>
+        <label for="city-search">Search by city:</label>
+        <input type="search" id="city-search" name="city"
+               aria-label="Search through site content">
+    </p>
+    <p>
+        <label for="street-search">Search by street:</label>
+        <input type="search" id="street-search" name="street"
+               aria-label="Search through site content">
+    </p>
+    <p>
+        <label for="phone-search">Search by phone:</label>
+        <input type="search" id="phone-search" name="phone"
+               aria-label="Search through site content">
+    </p>
+
+    <label for="url-search">Search by url:</label>
+    <input type="search" id="url-search" name="url"
+           aria-label="Search through site content">
+    <br>
+    <button class="btn-secondary" id="search-btn">Search</button>
+
+
+</div>
+
+
+<script>
+
+
+    window.addEventListener('load', () => {
+        const searchBtn = document.querySelector('#search-btn')
+        const searchInput = document.querySelector('#site-search')
+        searchBtn.addEventListener('click', () => {
+            const searchInputs = document.querySelectorAll('input[type=search]')
+            let searchQueries = ''
+            let first_iteration = true
+            searchInputs.forEach(searchInput => {
+                let searchKey = searchInput.getAttribute('name')
+                let searchValue = searchInput.value
+                if (searchValue !== '') {
+                    if (first_iteration === true) {
+                        let searchQuery = `?${searchKey}=${searchValue}`
+                        searchQueries += searchQuery
+                        first_iteration = false
+                    } else {
+                        let searchQuery = `&${searchKey}=${searchValue}`
+                        searchQueries += searchQuery
+                    }
+                }
+
+            })
+            window.location.href = searchQueries
+            console.log(searchQueries)
+        })
+
+    })
+
+</script>

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load image_manager %}
+{% block title %}
+    Manage Contact
+{% endblock %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post" action="">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div>
+                {% if field == form.country %}
+                    {% load countries %}
+                    {% get_countries as countries %}
+                    {% if field.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ field.errors }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+
+                    <label for="{{ field.id_for_label }}">{{ field.label }}
+
+                        <select name="{{ field.name }}" id="{{ field.id_for_label }}">
+                            {% for country in countries %}
+                                {% comment %}Setting selected option from instance form data (if there is any instance){% endcomment %}
+                                <option  {% if country.code ==  field.value %} selected {% endif %}
+                                                                               value="{{ country.code }}">{{ country.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </label>
+
+
+                {% elif field == form.image %}
+                    {% if field.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ field.errors }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+
+                    <label for="{{ field.id_for_label }}">{{ field.label }}
+
+
+                        <input type="file" name="{{ field.html_name }}"
+                               value="">
+
+                        {% if field.value %}  <img src='{{ field.value|get_image_absolute_url }}' height="100">
+                        {% endif %}
+                    </label>
+
+                {% else %}
+
+                    {% if field.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ field.errors }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    <label for="{{ field.id_for_label }}">{{ field.label }}
+                        <input name="{{ field.html_name }}"
+                               value="{% if field.value %}{{ field.value }}{% endif %}">
+                    </label>
+                    </div>
+
+
+                {% endif %}
+
+
+        {% endfor %}
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    {% for field in form %}
+
+    {% endfor %}
+
+    <a href="{% url 'contacts_list' %}" class="btn btn-secondary">Back to contacts</a>
+
+
+{% endblock %}
