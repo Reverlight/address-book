@@ -4,6 +4,9 @@ from django_countries.fields import CountryField
 
 
 class Contact(models.Model):
+    class Meta:
+        unique_together = ('first_name', 'last_name')
+
     first_name = models.CharField(max_length=50, blank=False)
     last_name = models.CharField(max_length=50, blank=False)
     country = CountryField(blank=True)
@@ -18,5 +21,3 @@ class Contact(models.Model):
                                message="Enter valid url, for example: https://www.google.com.ua")
     url = models.CharField(validators=[url_regex], max_length=200, blank=True)
 
-    class Meta:
-        unique_together = ('first_name', 'last_name')
