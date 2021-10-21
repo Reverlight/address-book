@@ -1,6 +1,6 @@
 # address_book
 ## How to install
-
+Application for creating contacts with corresponding search by all the fields.
 * Install python 3
 * Create virtualenv
 * Git clone https://github.com/Reverlight/address_book.git
