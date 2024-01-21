@@ -1,9 +1,8 @@
-from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from ..views import add_contact, edit_contact, delete_contact, contacts_list
 
 
-class TestUrls(SimpleTestCase):
+class TestUrls:
     def test_add_contact_is_resolved(self):
         url = reverse('add_contact')
         self.assertEquals(resolve(url).func, add_contact)

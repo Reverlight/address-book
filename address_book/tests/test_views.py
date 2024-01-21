@@ -1,11 +1,13 @@
-from unittest import TestCase
-
-from django.test import SimpleTestCase, Client
+from django.test import Client
 from django.urls import reverse
 from ..models import Contact
 
-class TestViews(TestCase):
-    def setUp(self):
+
+client = Client()
+
+
+class TestViews:
+    def setup_class(self):
         self.client = Client()
 
     def test_contacts_list_view(self):
