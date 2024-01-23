@@ -9,11 +9,11 @@ services:
       - ./src/:/home/app/
     build:
       context: ./
-      dockerfile: ./infrastructure/nginx.Dockerfile
+      dockerfile: nginx.Dockerfile
   gunicorn:
     build:
       context: ./
-      dockerfile: ./infrastructure/gunicorn.Dockerfile
+      dockerfile: gunicorn.Dockerfile
     command: gunicorn core.wsgi --bind 0.0.0.0:8000
     volumes:
       - ./src/:/home/app/
