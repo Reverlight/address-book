@@ -4,7 +4,7 @@ from django.urls import reverse
 
 @pytest.mark.django_db
 def test_create_contact(client):
-    with open('address_book/tests/images/Alex.jpg', 'rb') as image:
+    with open('src/address_book/tests/images/Alex.jpg', 'rb') as image:
         response = client.post(reverse('add_contact'), {
             'first_name': 'Alex',
             'last_name': 'Gubanov',
@@ -20,7 +20,7 @@ def test_create_contact(client):
 
 @pytest.mark.django_db
 def test_create_delete_contact(client):
-    with open('address_book/tests/images/Gleb.png', 'rb') as image:
+    with open('src/address_book/tests/images/Gleb.png', 'rb') as image:
         create_response = client.post(reverse('add_contact'), {
             'first_name': 'Gleb',
             'last_name': 'Molchun',
@@ -38,7 +38,7 @@ def test_create_delete_contact(client):
 
 @pytest.mark.django_db
 def test_create_get_contacts(client):
-    with open('address_book/tests/images/Gleb.png', 'rb') as image:
+    with open('src/address_book/tests/images/Gleb.png', 'rb') as image:
         create_response = client.post(reverse('add_contact'), {
             'first_name': 'Gleb',
             'last_name': 'Molchun',
@@ -49,7 +49,7 @@ def test_create_get_contacts(client):
             'image': image,
         })
         assert create_response.status_code == 200
-    with open('address_book/tests/images/Alex.jpg', 'rb') as image:
+    with open('src/address_book/tests/images/Alex.jpg', 'rb') as image:
         response = client.post(reverse('add_contact'), {
             'first_name': 'Alex',
             'last_name': 'Gubanov',
