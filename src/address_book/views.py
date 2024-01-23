@@ -57,8 +57,6 @@ def add_contact(request):
         form = ContactForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-        else:
-            print(form.errors)
 
     context = {'form': form}
     return render(request, 'manage_contact.html', context)
