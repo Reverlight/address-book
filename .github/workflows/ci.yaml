@@ -39,4 +39,4 @@ jobs:
         python src/manage.py migrate
     - name: Test with pytest
       run: |
-        pytest src
+        pytest -c ../.env src
