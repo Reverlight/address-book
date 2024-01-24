@@ -35,7 +35,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Django migrations
       run: |
-        pip install python-dotenv
+        pip install python-dotenv[cli]
         python -m dotenv -f ../.env src/manage.py makemigrations
         python -m dotenv -f ../.env src/manage.py migrate
     - name: Test with pytest
