@@ -6,14 +6,24 @@ Application for creating contacts with corresponding search by all the fields.
 * Git clone https://github.com/Reverlight/address_book.git
 * Use following commands for set-up using virtualenv:
 
-``pip install -r requirements``
+## Configure envs
 
-``python manage.py makemigrations``
+### Important! Change DJANGO_SECRET_KEY before usage!
 
-``python manage.py migrate``
+Django config: src/.env
+```
+DJANGO_DEBUG_MODE=false
+DJANGO_SECRET_KEY=django-insecure-i00tygfvwjav1f%5qsu9)otzd&7k*hj^57=qdvoxg^5d=ac8lw
+```
+### When you deploy to production do not forget to change localhost to host machine IP address
+Nginx config: .env
+```
+NGINX_SERVER_HOSTNAME=localhost
+NGINX_SERVER_PORT=80
+```
 
-``python manage.py collectstatic``
+```docker-compose up gunicorn manage.py migrate```
 
-## Run 
+## Run server with following command
 
-``python manage.py runserver``
+```docker-compose up```
