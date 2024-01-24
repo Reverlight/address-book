@@ -22,7 +22,11 @@ NGINX_SERVER_HOSTNAME=localhost
 NGINX_SERVER_PORT=80
 ```
 
-```docker-compose up gunicorn manage.py migrate```
+## Run database migration
+```
+docker-compose up gunicorn python3 manage.py makemigrations
+docker-compose up gunicorn python3 manage.py migrate
+```
 
 ## Run server with following command
 
