@@ -15,6 +15,8 @@ services:
       args:
         NGINX_SERVER_HOSTNAME: ${NGINX_SERVER_HOSTNAME}
         NGINX_SERVER_PORT: ${NGINX_SERVER_PORT}
+    links:
+      - "gunicorn:gunicorn"
   gunicorn:
     build:
       context: ./
@@ -22,5 +24,3 @@ services:
     command: gunicorn core.wsgi --bind 0.0.0.0:8000
     volumes:
       - ./src/:/home/app/
-    ports:
-      - '8000:8000'
