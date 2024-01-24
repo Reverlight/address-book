@@ -21,6 +21,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
+      working-directory: ./src
       with:
         python-version: "3.10"
     - name: Install dependencies
@@ -35,8 +36,8 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Django migrations
       run: |
-        python src/manage.py makemigrations
-        python src/manage.py migrate
+        python manage.py makemigrations
+        python manage.py migrate
     - name: Test with pytest
       run: |
-        pytest -c src/.env src
+        pytest
