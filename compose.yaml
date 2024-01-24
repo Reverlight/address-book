@@ -24,6 +24,3 @@ services:
       - ./src/:/home/app/
     ports:
       - '8000:8000'
-    environment:
-      DJANGO_DEBUG_MODE: ${DJANGO_DEBUG_MODE}
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
