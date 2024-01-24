@@ -30,4 +30,6 @@ docker-compose up gunicorn python3 manage.py migrate
 
 ## Run server with following command
 
-```docker-compose up```
+```
+docker-compose up
+```
