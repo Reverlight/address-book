@@ -9,20 +9,21 @@ COPY src/media ./media
 
 RUN touch /etc/nginx/conf.d/custom.conf
 
-RUN echo -e "upstream django {" \
-            "server gunicorn:8000;" \
-          "}"\
-          "server {" \
-            "listen 80;" \
-            "server_name localhost;" \
-            "location = /favicon.ico { access_log off; log_not_found off; }" \
-            "location /static/ {" \
-              "root /home/app/;" \
-            "}" \
-            "location /media/ {" \
-              "root /home/app/;" \
-            "}" \
-            "location / {" \
-              "proxy_pass http://django;" \
-            "}" \
-          "}" > /etc/nginx/conf.d/custom.conf
+RUN echo -e \
+    "upstream django {\n" \
+    "   server gunicorn:8000;\n" \
+    "}\n"\
+    "server {\n" \
+    "   listen 80;\n" \
+    "   server_name localhost;\n" \
+    "   location = /favicon.ico { access_log off; log_not_found off; }\n" \
+    "   location /static/ {\n" \
+    "     root /home/app/;\n" \
+    "   }\n" \
+    "   location /media/ {\n" \
+    "     root /home/app/;\n" \
+    "   }\n" \
+    "   location / {\n" \
+    "     proxy_pass http://django;\n" \
+    "   }\n" \
+    "}\n" > /etc/nginx/conf.d/custom.conf
