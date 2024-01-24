@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  nginx:
+    ports:
+      - "80:80"
+    depends_on:
+      - gunicorn
+    volumes:
+      - ./src/:/home/app/
+    env_file:
+      - .env
+    build:
+      context: ./
+      dockerfile: nginx.Dockerfile
+      args:
+        NGINX_SERVER_HOSTNAME: ${NGINX_SERVER_HOSTNAME}
+        NGINX_SERVER_PORT: ${NGINX_SERVER_PORT}
+    links:
+      - "gunicorn:gunicorn"
+  gunicorn:
+    build:
+      context: ./
+      dockerfile: gunicorn.Dockerfile
+    command: gunicorn core.wsgi --bind 0.0.0.0:8000
+    volumes:
+      - ./src/:/home/app/
