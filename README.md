@@ -1,15 +1,19 @@
 # address_book
-## About
-Python django application for creating/view/edit contacts with corresponding search by all the fields.
-Supports CI and CD AWS EC2 workflows
-Application is run via docker containers
+## Python django application for managing contacts
+### Features:
+* Supports search by all the contact fields.
+* Supports CI that automatically runs pytest tests
+* Supports CD for automatic deploy to AWS EC2 instance
+* Application is run via docker containers
+* Production environment already tested and configured using nginx and gunicorn
+
+![Preview](preview.png)
 
 ## Prerequisites
 * Install docker https://docs.docker.com/engine/install/
 * Install docker compose https://docs.docker.com/compose/install/
 
 ## Configure envs
-
 ### Important! Change DJANGO_SECRET_KEY before usage!
 
 Django config: src/.env
