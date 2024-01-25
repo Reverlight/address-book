@@ -23,4 +23,4 @@ jobs:
         script: |
           cd address-book
           git pull
-          docker compose up --build -d
+          sudo docker compose up --build -d
