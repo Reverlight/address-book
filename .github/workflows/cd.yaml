@@ -1,13 +1,7 @@
 name: Docker Image CI
 
 on:
-  workflow_run:
-    workflows: [ 'job1's name' ]
-    types:
-      - completed
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
