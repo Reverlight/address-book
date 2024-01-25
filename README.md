@@ -1,10 +1,12 @@
 # address_book
-## How to install
-Application for creating contacts with corresponding search by all the fields.
-* Install python 3
-* Create virtualenv
-* Git clone https://github.com/Reverlight/address_book.git
-* Use following commands for set-up using virtualenv:
+## About
+Python django application for creating/view/edit contacts with corresponding search by all the fields.
+Supports CI and CD AWS EC2 workflows
+Application is run via docker containers
+
+## Prerequisites
+* Install docker https://docs.docker.com/engine/install/
+* Install docker compose https://docs.docker.com/compose/install/
 
 ## Configure envs
 
@@ -15,7 +17,7 @@ Django config: src/.env
 DJANGO_DEBUG_MODE=false
 DJANGO_SECRET_KEY=django-insecure-i00tygfvwjav1f%5qsu9)otzd&7k*hj^57=qdvoxg^5d=ac8lw
 ```
-### When you deploy to production do not forget to change localhost to host machine IP address
+
 Nginx config: .env
 ```
 NGINX_SERVER_HOSTNAME=localhost
@@ -31,5 +33,5 @@ docker compose run gunicorn python3 manage.py migrate
 ## Run server with following command
 
 ```
-docker-compose up
+docker compose up
 ```
