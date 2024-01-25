@@ -3,6 +3,7 @@ services:
   nginx:
     ports:
       - "80:80"
+    image: '227324806863.dkr.ecr.eu-central-1.amazonaws.com/address-book'
     depends_on:
       - gunicorn
     volumes:
@@ -18,6 +19,7 @@ services:
     links:
       - "gunicorn:gunicorn"
   gunicorn:
+    image: '227324806863.dkr.ecr.eu-central-1.amazonaws.com/address-book'
     build:
       context: ./
       dockerfile: gunicorn.Dockerfile
