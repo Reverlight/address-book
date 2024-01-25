@@ -24,8 +24,8 @@ NGINX_SERVER_PORT=80
 
 ## Run database migration
 ```
-docker-compose up gunicorn python3 manage.py makemigrations
-docker-compose up gunicorn python3 manage.py migrate
+docker compose run gunicorn python3 manage.py makemigrations
+docker compose run gunicorn python3 manage.py migrate
 ```
 
 ## Run server with following command
