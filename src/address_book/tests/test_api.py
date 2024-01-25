@@ -49,7 +49,7 @@ def test_create_get_contacts(client):
             'image': image,
         })
         assert create_response.status_code == 200
-    with open('asdaddress_book/tests/images/Alex.jpg', 'rb') as image:
+    with open('address_book/tests/images/Alex.jpg', 'rb') as image:
         response = client.post(reverse('add_contact'), {
             'first_name': 'Alex',
             'last_name': 'Gubanov',
