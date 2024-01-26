@@ -31,7 +31,7 @@ jobs:
         echo -e \
             "DJANGO_DEBUG_MODE=false\n" \
             "DJANGO_SECRET_KEY=django-insecure-i00tygfvwjav1f%5qsu9)otzd&7k*hj^57=qdvoxg^5d=ac8lw\n" \
-            > /.env
+            > .env
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
