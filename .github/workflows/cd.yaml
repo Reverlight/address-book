@@ -3,8 +3,6 @@ name: Test and deploy to production on AWS EC2
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: ["main"]
 
 jobs:
   testing:
