@@ -26,6 +26,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        cat > .env DJANGO_DEBUG_MODE=false DJANGO_SECRET_KEY=django-insecure-i00tygfvwjav1f%5qsu9)otzd&7k*hj^57=qdvoxg^5d=ac8lw
+    - name: Create .env
+      run: |
+        echo -e \
+            "DJANGO_DEBUG_MODE=false\n" \
+            "DJANGO_SECRET_KEY=django-insecure-i00tygfvwjav1f%5qsu9)otzd&7k*hj^57=qdvoxg^5d=ac8lw\n" \
+            > /.env
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
