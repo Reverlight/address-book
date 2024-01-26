@@ -2,7 +2,7 @@ version: "3.8"
 services:
   nginx:
     ports:
-      - "80:80"
+      - ${NGINX_SERVER_PORT}:${NGINX_SERVER_PORT}
     depends_on:
       - gunicorn
     volumes:
